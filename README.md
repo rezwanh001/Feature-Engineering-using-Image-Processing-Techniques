@@ -101,6 +101,15 @@ for i in range(len(vList)):
     video_to_frames(vDirName, dst_File, tail)
 ```
 
+## Name of Inputs images:
+  - S85_F56_GL=12.9-850LEDFon_F=100
+  - S85_F56_GL=12.9-850LEDFon_F=105
+  - S91_F46_GL=7.9-940LEDFon_F=115
+  - S91_F46_GL=7.9-940LEDFon_F=120
+  - S140_M75_GL=11.5-850LEDFon_F=120
+  - S140_M75_GL=11.5-940LEDFon_F=100
+
+
 **(1) Local Binary Patterns(LBP).** [Source](https://github.com/arsho/local_binary_patterns/blob/master/lbp.py)
 ```python
 
@@ -181,6 +190,7 @@ if __name__ == '__main__':
   <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43467874-879b99ba-9504-11e8-8afa-0c7915adce9b.jpg">
   <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43467887-8f8d1bd0-9504-11e8-9ce9-6afe37b80182.jpg">
   <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43467888-8fee259c-9504-11e8-9294-9ef35199ad9c.jpg">
+  <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43481551-0f2ba3e8-9528-11e8-8b0c-1cb365b931cc.jpg">
   <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43468021-ca6b0442-9504-11e8-93d9-84001bde3f4e.jpg">
 </p>
 
@@ -191,5 +201,6 @@ if __name__ == '__main__':
   <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43480952-79e41578-9526-11e8-8f7a-cef791f7381c.jpg">
   <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43480958-7c4fa4da-9526-11e8-8a48-094cd2fd0aae.jpg">
   <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43480965-7f2a8184-9526-11e8-8844-17279ea5239d.jpg">
+  <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43481650-5ac926a4-9528-11e8-91a2-8e45e9bf10ab.jpg">
   <img width="172" height="90" src="https://user-images.githubusercontent.com/15044221/43480970-83454632-9526-11e8-8ef7-c7001532f28d.jpg">
 </p>
