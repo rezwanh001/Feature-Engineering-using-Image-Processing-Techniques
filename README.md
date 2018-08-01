@@ -443,7 +443,7 @@ if __name__ == '__main__':
 </p>
  
 
-**(4) FAST Algorithm for Corner Detection.** [Source](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_fast/py_fast.html) 
+**(5) FAST Algorithm for Corner Detection.** [Source](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_fast/py_fast.html) 
 
 ```python
 def FAST(img):
