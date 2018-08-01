@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 import glob
 import sys
 import os
+import mahotas as mt
 
 def get_fps(src_dir):
     video = cv2.VideoCapture(src_dir);
@@ -529,3 +530,67 @@ if __name__ == '__main__':
   <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503589-d4cbbce2-9581-11e8-939a-272794e0b636.jpg">
   <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503593-d5214b4e-9581-11e8-8b9f-917bf31c7926.jpg">
 </p>
+
+
+
+
+**(6) Texture Recognition using Haralick Texture.** [Source](https://gogul09.github.io/software/texture-recognition) 
+
+```python
+def harlick_extract_features(image):
+    # calculate haralick texture features for 4 types of adjacency
+    textures = mt.features.haralick(image)
+
+    ht_mean = textures.mean(axis=0)
+    
+    return textures
+        
+    
+
+
+if __name__ == '__main__':
+    
+    path = "/media/rezwan/Study/Thesis/Feature_Extraction_Code/dataset/images"
+    dst_path = "/media/rezwan/Study/Thesis/Feature_Extraction_Code/dataset/Haralick"
+    
+    if not os.path.exists(dst_path):
+        os.mkdir(dst_path)
+
+    for ff in os.listdir(path):
+        imgg = cv2.imread(os.path.join(path,ff))
+
+        # Read the orginal images
+#         cv2.imshow(str(ff),imgg)
+#         if cv2.waitKey(0) & 0xff == 27:
+#             cv2.destroyAllWindows()
+
+
+        # Apply operation on Images 
+        res1 = harlick_extract_features(imgg)
+        
+        
+        cv2.imwrite(os.path.join(dst_path, str(ff)[:-4] + '_Haralick.jpg'), res1)
+```
+
+  - Inputs:
+
+<p align="center">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467872-873b029e-9504-11e8-8bf5-f7d92a4d3765.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467874-879b99ba-9504-11e8-8afa-0c7915adce9b.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467887-8f8d1bd0-9504-11e8-9ce9-6afe37b80182.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467888-8fee259c-9504-11e8-9294-9ef35199ad9c.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43481551-0f2ba3e8-9528-11e8-8b0c-1cb365b931cc.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43468021-ca6b0442-9504-11e8-93d9-84001bde3f4e.jpg">
+</p>
+
+ - Outputs:
+ 
+ <p align="center">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43540406-760d5266-95e9-11e8-9813-d8d431b0649e.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43540407-76545a58-95e9-11e8-87cb-f0e2b4a4d80f.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43540409-76989614-95e9-11e8-9629-3834787651ae.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43540410-76e07a9c-95e9-11e8-84f1-002b84519aaf.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43540411-77ee85be-95e9-11e8-9d8c-56461300af1e.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43540412-78312c0c-95e9-11e8-87de-3f3b7d5a7376.jpg">
+</p>
+
