@@ -348,7 +348,7 @@ if __name__ == '__main__':
         print(np.array(feat))
         del feat
 ```
-   - Inputs:
+  - Inputs:
 
 <p align="center">
   <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467872-873b029e-9504-11e8-8bf5-f7d92a4d3765.jpg">
@@ -419,7 +419,8 @@ if __name__ == '__main__':
         
         cv2.imwrite(os.path.join(dst_path, str(ff)[:-4] + '_HCorner.jpg'), res1)
  ```
-    - Inputs:
+    
+  - Inputs:
 
 <p align="center">
   <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467872-873b029e-9504-11e8-8bf5-f7d92a4d3765.jpg">
@@ -441,3 +442,90 @@ if __name__ == '__main__':
   <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503084-930f16d4-957f-11e8-8d3a-f2c5eea3d295.jpg">
 </p>
  
+
+**(4) FAST Algorithm for Corner Detection.** [Source](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_fast/py_fast.html) 
+
+```python
+def FAST(img):
+
+    # Initiate FAST object with default values
+    fast = cv2.FastFeatureDetector_create(threshold=0)
+
+    # find and draw the keypoints
+    kp = fast.detect(img,None)
+    img2 = cv2.drawKeypoints(img, kp, None,color=(255,0,0))
+
+    print("Threshold: ", fast.getThreshold())
+    print("nonmaxSuppression: ", fast.getNonmaxSuppression())
+    print("neighborhood: ", fast.getType())
+    print("Total Keypoints with nonmaxSuppression: ", len(kp))
+
+#     cv2.imwrite('fast_true.png',img2)
+#     cv2.imshow('fast_true',img2)
+#     if cv2.waitKey(0) & 0xff == 27:
+#         cv2.destroyAllWindows()
+
+    # Disable nonmaxSuppression
+    fast.setNonmaxSuppression(0)
+    kp = fast.detect(img,None)
+
+    print ("Total Keypoints without nonmaxSuppression: ", len(kp))
+
+    img3 = cv2.drawKeypoints(img, kp, None, color=(255,0,0))
+    
+    return img3
+
+# #     cv2.imwrite('fast_false.png',img3)
+#     cv2.imshow('fast_false',img3)
+#     if cv2.waitKey(0) & 0xff == 27:
+#         cv2.destroyAllWindows()
+        
+    
+
+
+
+if __name__ == '__main__':
+    
+    path = "/media/rezwan/Study/Thesis/Feature_Extraction_Code/dataset/images"
+    dst_path = "/media/rezwan/Study/Thesis/Feature_Extraction_Code/dataset/FAST"
+    
+    if not os.path.exists(dst_path):
+        os.mkdir(dst_path)
+
+    for ff in os.listdir(path):
+        imgg = cv2.imread(os.path.join(path,ff))
+
+        # Read the orginal images
+#         cv2.imshow(str(ff),imgg)
+#         if cv2.waitKey(0) & 0xff == 27:
+#             cv2.destroyAllWindows()
+
+
+        # Apply operation on Images (LBP)
+        res1 = FAST(imgg)
+        
+        
+        cv2.imwrite(os.path.join(dst_path, str(ff)[:-4] + '_FAST.jpg'), res1)
+```
+
+  - Inputs:
+
+<p align="center">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467872-873b029e-9504-11e8-8bf5-f7d92a4d3765.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467874-879b99ba-9504-11e8-8afa-0c7915adce9b.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467887-8f8d1bd0-9504-11e8-9ce9-6afe37b80182.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467888-8fee259c-9504-11e8-9294-9ef35199ad9c.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43481551-0f2ba3e8-9528-11e8-8b0c-1cb365b931cc.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43468021-ca6b0442-9504-11e8-93d9-84001bde3f4e.jpg">
+</p>
+
+ - Outputs:
+ 
+ <p align="center">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503582-d382ad8c-9581-11e8-980a-c7e5de92e5ef.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503583-d3d4628a-9581-11e8-8dc6-0e39b2b14f3a.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503585-d424289c-9581-11e8-9c34-6497ead84e76.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503586-d46e3946-9581-11e8-82a0-24ff12a1952d.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503589-d4cbbce2-9581-11e8-939a-272794e0b636.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43503593-d5214b4e-9581-11e8-8b9f-917bf31c7926.jpg">
+</p>
