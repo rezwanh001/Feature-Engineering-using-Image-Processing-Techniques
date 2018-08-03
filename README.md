@@ -659,3 +659,73 @@ if __name__ == '__main__':
   <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43652048-e1487510-9765-11e8-8132-c1bef9b60136.jpg">
   <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43652050-e18c6c3e-9765-11e8-8f9d-749fdc603d52.jpg">
 </p>
+
+
+
+**(8) Fourier Transform.** [Source](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_transforms/py_fourier_transform/py_fourier_transform.html)
+
+```python
+def fourier(img):
+#     img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY )
+
+    f = np.fft.fft2(img)
+    fshift = np.fft.fftshift(f)
+    magnitude_spectrum = 20*np.log(np.abs(fshift))
+
+    return magnitude_spectrum
+
+#     rows, cols = img.shape
+#     crow,ccol = rows/2 , cols/2
+#     fshift[crow-30:crow+30, ccol-30:ccol+30] = 0
+#     f_ishift = np.fft.ifftshift(fshift)
+#     img_back = np.fft.ifft2(f_ishift)
+#     img_back = np.abs(img_back)
+    
+#     return img_back
+
+        
+        
+if __name__ == '__main__':
+    
+    path = "/media/rezwan/Study/Thesis/Feature_Extraction_Code/dataset/images"
+    dst_path = "/media/rezwan/Study/Thesis/Feature_Extraction_Code/dataset/Fourier"
+    
+    if not os.path.exists(dst_path):
+        os.mkdir(dst_path)
+
+    for ff in os.listdir(path):
+        imgg = cv2.imread(os.path.join(path,ff))
+
+        # Read the orginal images
+#         cv2.imshow(str(ff),imgg)
+#         if cv2.waitKey(0) & 0xff == 27:
+#             cv2.destroyAllWindows()
+
+
+        # Apply operation on Images 
+        res1 = fourier(imgg)
+        
+        
+        cv2.imwrite(os.path.join(dst_path, str(ff)[:-4] + '_fourier.jpg'), res1)
+```
+  - Inputs:
+
+<p align="center">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467872-873b029e-9504-11e8-8bf5-f7d92a4d3765.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467874-879b99ba-9504-11e8-8afa-0c7915adce9b.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467887-8f8d1bd0-9504-11e8-9ce9-6afe37b80182.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467888-8fee259c-9504-11e8-9294-9ef35199ad9c.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43481551-0f2ba3e8-9528-11e8-8b0c-1cb365b931cc.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43468021-ca6b0442-9504-11e8-93d9-84001bde3f4e.jpg">
+</p>
+
+ - Outputs:
+ 
+ <p align="center">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43654178-3a076534-976c-11e8-9862-c40f4b6826b6.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43654179-3a54aec0-976c-11e8-847b-c3814112066b.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43654180-3a961f5e-976c-11e8-94c1-ee767b0600bc.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43654181-3ad7ae56-976c-11e8-9ede-5a1730481477.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43654182-3b16c032-976c-11e8-8c0b-fdd5f7ed10a9.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43654183-3b6144ae-976c-11e8-8faf-940925ab7df8.jpg">
+</p>
