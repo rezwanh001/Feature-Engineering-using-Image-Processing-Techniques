@@ -594,3 +594,68 @@ if __name__ == '__main__':
   <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43540412-78312c0c-95e9-11e8-87de-3f3b7d5a7376.jpg">
 </p>
 
+
+**(7) Shi-Tomasi Corner Detector & Good Features to Track.** [Source](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_shi_tomasi/py_shi_tomasi.html)
+
+```python
+def goodFeaturesToTrack(img):
+    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+
+    corners = cv2.goodFeaturesToTrack(gray,25,0.01,10)
+    corners = np.int0(corners)
+
+    for i in corners:
+        x,y = i.ravel()
+        cv2.circle(img,(x,y),3,255,-1)
+    
+#     cv2.imshow('goodFeaturesToTrack', img)
+#     if cv2.waitKey(0) & 0xff == 27:
+#         cv2.destroyAllWindows()
+
+    return img
+        
+        
+if __name__ == '__main__':
+    
+    path = "/media/rezwan/Study/Thesis/Feature_Extraction_Code/dataset/images"
+    dst_path = "/media/rezwan/Study/Thesis/Feature_Extraction_Code/dataset/Shi-Tomasi "
+    
+    if not os.path.exists(dst_path):
+        os.mkdir(dst_path)
+
+    for ff in os.listdir(path):
+        imgg = cv2.imread(os.path.join(path,ff))
+
+        # Read the orginal images
+#         cv2.imshow(str(ff),imgg)
+#         if cv2.waitKey(0) & 0xff == 27:
+#             cv2.destroyAllWindows()
+
+
+        # Apply operation on Images 
+        res1 = goodFeaturesToTrack(imgg)
+        
+        
+        cv2.imwrite(os.path.join(dst_path, str(ff)[:-4] + '_shi.jpg'), res1)
+```
+  - Inputs:
+
+<p align="center">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467872-873b029e-9504-11e8-8bf5-f7d92a4d3765.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467874-879b99ba-9504-11e8-8afa-0c7915adce9b.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467887-8f8d1bd0-9504-11e8-9ce9-6afe37b80182.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43467888-8fee259c-9504-11e8-9294-9ef35199ad9c.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43481551-0f2ba3e8-9528-11e8-8b0c-1cb365b931cc.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43468021-ca6b0442-9504-11e8-93d9-84001bde3f4e.jpg">
+</p>
+
+ - Outputs:
+ 
+ <p align="center">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43652033-d49180be-9765-11e8-827e-a8d515c9c25c.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43652034-d4d6d2b8-9765-11e8-9a73-b00d39661401.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43652046-e0bcdb4a-9765-11e8-9a79-8031f3869079.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43652047-e105222e-9765-11e8-9946-d62c823eefee.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43652048-e1487510-9765-11e8-8132-c1bef9b60136.jpg">
+  <img width="142" height="90" src="https://user-images.githubusercontent.com/15044221/43652050-e18c6c3e-9765-11e8-8f9d-749fdc603d52.jpg">
+</p>
